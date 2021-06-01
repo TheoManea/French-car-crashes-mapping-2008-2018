@@ -18,8 +18,8 @@ I decided to use python to fetch the data because the csv module is very easy to
 For the moment you can filter with 7 parameters (many more are coming). Just fill those parameters and click to see the map.
 
 # Preview
-![settings](https://ibb.co/6R8rp8L)
-![result](https://ibb.co/Yk6Rb3g)
+![alt text](https://ibb.co/6R8rp8L)
+![alt text](https://ibb.co/Yk6Rb3g)
 
 ## Want to contribute ?
 
