@@ -1,3 +1,4 @@
+
 ![ListForks](https://forthebadge.com/images/badges/built-with-love.svg)
 ![ListForks](https://forthebadge.com/images/badges/made-with-java.svg)
 ![ListForks](https://forthebadge.com/images/badges/open-source.svg)
@@ -18,8 +19,9 @@ I decided to use python to fetch the data because the csv module is very easy to
 For the moment you can filter with 7 parameters (many more are coming). Just fill those parameters and click to see the map.
 
 # Preview
-![alt text](https://ibb.co/6R8rp8L)
-![alt text](https://ibb.co/Yk6Rb3g)
+![1](https://user-images.githubusercontent.com/29795114/120298785-aa395b00-c2ca-11eb-9191-5cc32321ac37.JPG)
+![2](https://user-images.githubusercontent.com/29795114/120298820-b1606900-c2ca-11eb-94f2-35d2fe70b8a1.JPG)
+
 
 ## Want to contribute ?
 
