@@ -17,6 +17,19 @@ I decided to use python to fetch the data because the csv module is very easy to
 
 # How to use it ?
 
+  # install flask first
+	$ pip install Flask
+	# clone the projetc
+	$ git clone https://github.com/dasher32/French-car-crashes-mapping-2008-2018.git
+	# move in the directory
+	$ cd .../.../French-car-crashes-mapping-2008-2018
+	# set the environment variable
+	$ export FLASK_ENV=development (bash only)
+	$ set FLASK_ENV=development (cmd only)
+	$ $env:FLASK_ENV = "development" (powershell only)
+	# and run it
+	$ flask run
+
 For the moment you can filter with 7 parameters (many more are coming). Just fill those parameters and click to see the map.
 
 # Preview
