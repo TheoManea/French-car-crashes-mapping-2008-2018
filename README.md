@@ -17,7 +17,7 @@ I decided to use python to fetch the data because the csv module is very easy to
 
 # How to use it ?
 
-  # install flask first
+  	# install flask first
 	$ pip install Flask
 	# clone the projetc
 	$ git clone https://github.com/dasher32/French-car-crashes-mapping-2008-2018.git
