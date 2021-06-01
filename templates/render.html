@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Résultat</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <style type="text/css">
+
+    	body {
+    		font-family: 'Roboto', sans-serif;
+    	}
+
+    	/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+		#map {
+		  height: 70%;
+		  margin-left: 10%;
+		  margin-right: 10%;
+		}
+
+		/* Optional: Makes the sample page fill the window. */
+		html,
+		body {
+		  height: 100%;
+		  margin: 0;
+		  padding: 0;
+		}
+    </style>
+
+</head>
+<body>
+	<center><p>Résultat pour l'année {{annee}}</p>
+		<p>Filtre => jour : {{jour}} , mois : {{mois}}, lum : {{lum}}, dep : {{dep}}, inter : {{inter}}, atm : {{atm}} </p>
+		<p id="bornePoint"></p>
+	</center>
+
+	<!--{% for row in array %}
+		<p>{{ row }}</p>
+	{% endfor %}-->
+
+	<script>
+      let map;
+      var bornePoint = 20000;
+
+      document.getElementById("bornePoint").innerHTML = " (Affichage pour " + bornePoint+ " points)";
+
+      var lum = { '0' : "null",'1' : "Plein jour" , '2' : "Crépuscule ou aube"  , '3' : "Nuit sans éclairage public" , '4' : "Nuit avec éclairage public non allumé", '5' : "Nuit avec éclairage public allumé" };
+      var inter = {'0' : "null", '1' : "Hors intersection" , '2' : "Intersection en X" , '3' : "Intersection en T" , '4' : "Intersection en Y" ,'5' : "Intersection à plus de 4 branches" , '6' : "Giratoire" ,'7' : "Place",'8' : "Passage à niveau" , '9' : "Autre intersection"}
+      var atm = {'0' : "null", '1' : "Normale" , '2' : "Pluie légère" , '3' : "Pluie forte" , '4' : "Neige - grêle" ,'5' : "Brouillard - fumée" , '6' : "Vent fort - tempête" ,'7' : "Temps éblouissant",'8' : "Temps couvert" , '9' : "Autre"}
+
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: 46, lng: 2 },
+          zoom: 4,
+        });
+
+
+        var infowindow = new google.maps.InfoWindow();
+
+         var data = JSON.parse('{{ coord | tojson | safe }}');
+         var day = JSON.parse('{{ jour | tojson | safe }}');
+         var month = JSON.parse('{{ mois | tojson | safe }}');
+         var light = JSON.parse('{{ lum | tojson | safe }}');
+         var dep = JSON.parse('{{ dep | tojson | safe }}');
+         var inter = JSON.parse('{{ inter | tojson | safe }}');
+         var atm = JSON.parse('{{ atm | tojson | safe }}');
+         
+     
+		 var count = Object.keys(data).length;
+		 /*console.log(count);*/
+
+		 //console.log(JSON.stringify(data));
+
+		 
+
+		 for(var i = 1; i < bornePoint; i++)
+		 {
+
+
+		 	latLng = new google.maps.LatLng(parseInt(data['location'][i].lat, 10) / Math.pow(10,5), parseInt(data['location'][i].lng, 10) / Math.pow(10,5), true);
+
+
+		 	//console.log("data est de type :" + typeof data['location'][i].mois + " et month de type " + typeof month)
+		 	/*console.log("data.mois et month =>" + JSON.stringify(data['location'][i].mois) + " et " + month + " => bool : " + JSON.stringify(data['location'][i].mois) === month)*/
+
+		 	if( (data['location'][i].mois == month || month == "" )  && (data['location'][i].lum == light || light == "null") )
+		 	{
+
+
+		 		if(data['location'][i].grav == "2")
+				 	{
+				 		var marker = new google.maps.Marker({
+					      position: latLng,
+					      title:"Accident mortel",
+					      visible: true,
+					      icon:'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+
+
+
+					  });
+
+
+				 	  makeInfoWindowEvent(map, infowindow, "Lat : " + (parseInt(data['location'][i].lat, 10) / Math.pow(10,5)) + ", Lng : " +  (parseInt(data['location'][i].lng, 10) / Math.pow(10,5)) +", Luminosité : " + lum[data['location'][i].lum] + ", gravite : " + data['location'][i].grav + ", mois : " +   data['location'][i].mois + ", département : " + data['location'][i].dep + ", type d'intersection :" + inter[data['location'][i].inter] + ", conditions atmosphériques : " + atm[data['location'][i].atm], marker);
+
+					  marker.setMap(map);
+
+				 	}
+				 	else
+				 	{
+				 		var marker = new google.maps.Marker({
+					      position: latLng,
+					      title:"Accident non-mortel",
+					      visible: true,
+					      icon:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+
+
+
+					  });
+
+
+				 	  makeInfoWindowEvent(map, infowindow, "Année :" + data['location'][i].an + ", \n Lat : " + (parseInt(data['location'][i].lat, 10) / Math.pow(10,5)) + ", Lng : " +  (parseInt(data['location'][i].lng, 10) / Math.pow(10,5)) + ", Luminosité : " + lum[data['location'][i].lum] + ", gravité : " + data['location'][i].grav + ", GPS : " + data['location'][i].gps + ", mois : " +   data['location'][i].mois + ", département : " + data['location'][i].dep + ", type d'intersection :" + inter[data['location'][i].inter] + ", conditions atmosphériques : " + atm[data['location'][i].atm], marker);
+
+					  marker.setMap(map);
+
+				 	}
+		 	}
+
+		 }
+
+
+
+		 function makeInfoWindowEvent(map, infowindow, contentString, marker) {
+		  google.maps.event.addListener(marker, 'click', function() {
+		    infowindow.setContent(contentString);
+		    infowindow.open(map, marker);
+		  });
+		}
+
+		 
+
+      }
+
+
+	
+	 
+
+	 
+
+    </script>
+
+	
+    <div id="map"></div>
+
+	 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhYpvAbt0gN7SR9hYFplzu3sh85cY4jE4&callback=initMap"
+	  type="text/javascript">google.maps.event.addDomListener(window,'load', initMap);</script>
+
+
+</body>
+</html>

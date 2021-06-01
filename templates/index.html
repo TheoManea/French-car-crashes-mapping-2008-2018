@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Accueil</title>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+	<style type="text/css">
+		
+		body {
+    		font-family: 'Roboto', sans-serif;
+    		background: rgba(19, 35, 47, 0.9);
+    		color: white;
+    	}
+
+		#box-margin
+		{
+			border: 1px solid white;
+			margin: 20px;
+			padding: 20px;
+			font-family: 'Roboto', sans-serif;
+			border-radius: 20px;
+		}
+
+		div, select {
+			margin: 10px;
+			text-align: center;
+
+		}
+
+		input {
+			border: 1px solid #a0b3b0;
+			color: #ffffff;
+			transition: border-color 0.25s ease, box-shadow 0.25s ease;
+			background: none;
+		}
+
+		input:focus {
+  			outline: 0;
+  			border-color: #1ab188;
+		}
+
+		select {
+			background: none;
+			color: #ffffff;	
+		}
+
+
+		
+	</style>
+	
+</head>
+<body>
+	<center><p>Cartographie des accidents de la route en France (2008 - 2018)</p></center>
+
+
+	<div id="box-margin">
+		
+		<center><p>Caractéristiques</p></center>
+		
+		<form action="http://localhost:5000/render" method="post">
+
+			<!--<span>Num_Acc</span>
+			<div class="ui input focus">
+				<input type="text" id="Num_Acc" name="Num_Acc"><br>
+			</div>-->
+			
+
+			<span>Année (entre 2008 et 2018)</span>
+			<div class="ui input focus">
+				<input type="text" id="an" name="an"><br>
+			</div>
+			
+
+			<span>jour de l'accident (1-31)</span>
+			<div class="ui input focus">
+				<input type="text" id="jour" name="jour"><br>
+			</div>
+			
+
+			<span>mois (1-12)</span>
+			<div class="ui input focus">
+				<input type="text" id="mois" name="mois"><br>
+			</div>
+			
+			
+
+			<span>Luminosité</span>
+			<select id="lum" name="lum">
+			  <option value="null">null</option>		
+			  <option value="1">1 - Plein Jour</option>
+			  <option value="2">2 - Crépuscule ou aube</option>
+			  <option value="3">3 - Nuit sans éclairage public</option>
+			  <option value="4">4 - Nuit avec éclairage public non allumé</option>
+			  <option value="5">5 - Nuit avec éclairage public allumé</option>
+			</select><br>
+
+			<span>Département</span>
+			<div class="ui input focus">
+				<input type="text" id="dep" name="dep"><br>
+			</div>
+			
+
+
+			<span>Intersection</span>
+			<select id="inter" name="inter">
+			  <option value="null">null</option>
+			  <option value="1">1 - Hors intersection</option>
+			  <option value="2">2 - Intersection en X</option>
+			  <option value="3">3 - Intersection en T</option>
+			  <option value="4">4 - Intersection en Y</option>
+			  <option value="5">5 - Intersection à plus de 4 branches </option>
+			  <option value="6">6 - Giratoire</option>
+			  <option value="7">7 - Place</option>
+			  <option value="8">8 - Passage à niveau</option>
+			  <option value="9">9 - Autre intersection</option>
+			</select><br>
+
+			<span>Conditions atmosphériques</span>
+			<select id="atm" name="atm">
+			  <option value="null">null</option>
+			  <option value="1">1 - Normale</option>
+			  <option value="2">2 - Pluie légère</option>
+			  <option value="3">3 - Pluie forte</option>
+			  <option value="4">4 - Neige - grêle</option>
+			  <option value="5">5 - Brouillard - fumée </option>
+			  <option value="6">6 - Vent fort - tempête</option>
+			  <option value="7">7 - Temps éblouissant</option>
+			  <option value="8">8 - Temps couvert</option>
+			  <option value="9">9 - Autre</option>
+			</select><br>
+
+
+
+			
+			
+
+
+			<center>
+				<button class="ui button" type="submit" style="background-color: #1ab188; color:white; border-radius: 20px; height: 50px; width: 100px; padding: 0; border: none;"> Ok </button>
+			</center>
+		
+			
+
+		</form>
+
+
+		
+
+	</div>
+
+	
+
+
+	
+
+</body>
+</html>
