@@ -1,6 +1,6 @@
 
 ![ListForks](https://forthebadge.com/images/badges/built-with-love.svg)
-![ListForks](https://forthebadge.com/images/badges/made-with-java.svg)
+![ListForks](https://forthebadge.com/images/badges/made-with-python.svg)
 ![ListForks](https://forthebadge.com/images/badges/open-source.svg)
 ![ListForks](https://forthebadge.com/images/badges/uses-git.svg)
 ![ListForks](https://forthebadge.com/images/badges/winter-is-coming.svg)
