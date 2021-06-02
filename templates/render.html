@@ -84,7 +84,9 @@
 		 	//console.log("data est de type :" + typeof data['location'][i].mois + " et month de type " + typeof month)
 		 	/*console.log("data.mois et month =>" + JSON.stringify(data['location'][i].mois) + " et " + month + " => bool : " + JSON.stringify(data['location'][i].mois) === month)*/
 
-		 	if( (data['location'][i].mois == month || month == "" )  && (data['location'][i].lum == light || light == "null") )
+		 	
+
+		 	if( (data['location'][i].mois == month || month == "" )  && (data['location'][i].lum == light || light == "null") && (data['location'][i].jour == day || day == "") && (data['location'][i].dep == dep || dep  == "") && (data['location'][i].inter == inter || inter == "null") && (data['location'][i].atm == atm || atm == "null") )
 		 	{
 
 
@@ -101,7 +103,7 @@
 					  });
 
 
-				 	  makeInfoWindowEvent(map, infowindow, "Lat : " + (parseInt(data['location'][i].lat, 10) / Math.pow(10,5)) + ", Lng : " +  (parseInt(data['location'][i].lng, 10) / Math.pow(10,5)) +", Luminosité : " + lum[data['location'][i].lum] + ", gravite : " + data['location'][i].grav + ", mois : " +   data['location'][i].mois + ", département : " + data['location'][i].dep + ", type d'intersection :" + inter[data['location'][i].inter] + ", conditions atmosphériques : " + atm[data['location'][i].atm], marker);
+				 	   makeInfoWindowEvent(map, infowindow, "Année :" + data['location'][i].an + ", \n Lat : " + (parseInt(data['location'][i].lat, 10) / Math.pow(10,5)) + ", Lng : " +  (parseInt(data['location'][i].lng, 10) / Math.pow(10,5)) + ", Luminosité : " + lum[data['location'][i].lum] + ", gravité : " + data['location'][i].grav + ", GPS : " + data['location'][i].gps + ", jour : " + data['location'][i].jour + ", mois : " +   data['location'][i].mois + ", département : " + data['location'][i].dep + ", type d'intersection :" + inter[data['location'][i].inter] + ", conditions atmosphériques : " + atm[data['location'][i].atm], marker);
 
 					  marker.setMap(map);
 
@@ -119,7 +121,7 @@
 					  });
 
 
-				 	  makeInfoWindowEvent(map, infowindow, "Année :" + data['location'][i].an + ", \n Lat : " + (parseInt(data['location'][i].lat, 10) / Math.pow(10,5)) + ", Lng : " +  (parseInt(data['location'][i].lng, 10) / Math.pow(10,5)) + ", Luminosité : " + lum[data['location'][i].lum] + ", gravité : " + data['location'][i].grav + ", GPS : " + data['location'][i].gps + ", mois : " +   data['location'][i].mois + ", département : " + data['location'][i].dep + ", type d'intersection :" + inter[data['location'][i].inter] + ", conditions atmosphériques : " + atm[data['location'][i].atm], marker);
+				 	  makeInfoWindowEvent(map, infowindow, "Année :" + data['location'][i].an + ", \n Lat : " + (parseInt(data['location'][i].lat, 10) / Math.pow(10,5)) + ", Lng : " +  (parseInt(data['location'][i].lng, 10) / Math.pow(10,5)) + ", Luminosité : " + lum[data['location'][i].lum] + ", gravité : " + data['location'][i].grav + ", GPS : " + data['location'][i].gps + ", jour : " + data['location'][i].jour + ", mois : " +   data['location'][i].mois + ", département : " + data['location'][i].dep + ", type d'intersection :" + inter[data['location'][i].inter] + ", conditions atmosphériques : " + atm[data['location'][i].atm], marker);
 
 					  marker.setMap(map);
 
