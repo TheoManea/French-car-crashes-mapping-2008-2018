@@ -24,9 +24,9 @@ I decided to use python to fetch the data because the csv module is very easy to
 	# move in the directory
 	$ cd .../.../French-car-crashes-mapping-2008-2018
 	# set the environment variable
-	$ export FLASK_ENV=development (bash only)
-	$ set FLASK_ENV=development (cmd only)
-	$ $env:FLASK_ENV = "development" (powershell only)
+	$ export FLASK_APP="main.py" (bash only)
+	$ set FLASK_APP="main.py" (cmd only)
+	$ $env:FLASK_APP = "main.py" (powershell only)
 	# and run it
 	$ flask run
 
